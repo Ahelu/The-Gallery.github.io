@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The gallery Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        :root{
+            --very-light-pink: #9a9a9a;
+            --text-input-field: #f7f7f7;
+            --yellow-painting: #d3a81c; 
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark: #232830;
+            --sm: 14px;
+            --md: 15px;
+            --lg: 18px;
+        }
+
+        body{
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .cards-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            justify-content: center;
+            gap: 15px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .product-card .product-img{
+            width: 100%;
+            height: 240px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 8px;
+        }
+
+        .product-card .product-info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-info p{
+            font-size: var(--md);
+        }
+
+        .product-info p:nth-child(1){
+            font-weight: 700;
+            padding-bottom: 4px;
+        }
+
+        .product-info figure img{
+            width: 28px;
+        }
+
+        @media (max-width: 600px) {
+            .cards-container{
+            width: 95%;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .product-card .product-img{
+             height: 160px;
+            }
+
+            .product-info p{
+                font-size: var(--sm);
+            }
+
+            .product-info p:nth-child(1){
+            font-weight: 700;
+            padding-bottom: 4px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Cards container -->
+    <div>
+        <div class="cards-container">
+            <!-- Card-->
+            <div class="product-card">
+
+                <!-- Product-img -->
+                <img src="https://images.pexels.com/photos/1738434/pexels-photo-1738434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="product-img" class="product-img">
+                <!-- Product-inf -->
+                <div class="product-info">
+                    <!-- Product-detail -->
+                    <div>
+                        <p>120dls</p>
+                        <p>Paint</p>
+                    </div>
+                    <!-- Product-add-img -->
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.png" alt="add">
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="product-card">
+                <!-- Product-img -->
+                <img src="https://images.pexels.com/photos/1812960/pexels-photo-1812960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="product-img" class="product-img">
+                <!-- Product-inf -->
+                <div class="product-info">
+                    <!-- Product-detail -->
+                    <div>
+                        <p>120dls</p>
+                        <p>Paint</p>
+                    </div>
+                    <!-- Product-add-img -->
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.png" alt="add">
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="product-card">
+                <!-- Product-img -->
+                <img src="https://images.pexels.com/photos/1738434/pexels-photo-1738434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="product-img" class="product-img">
+                <!-- Product-inf -->
+                <div class="product-info">
+                    <!-- Product-detail -->
+                    <div>
+                        <p>120dls</p>
+                        <p>Paint</p>
+                    </div>
+                    <!-- Product-add-img -->
+                    <figure>
+                        <img src="../icons/bt_add_to_cart.png" alt="add">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

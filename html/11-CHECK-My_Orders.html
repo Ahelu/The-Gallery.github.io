@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The gallery">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    
+    <title>The gallery</title>
+    <link rel="shortcut icon" href="../assets/icons/TheGalleryIco.ico">
+
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            font-size: 62.5%;
+            height: 100%;
+        }
+
+        :root{
+            --very-light-pink: #9a9a9a;
+            --text-input-field: #f7f7f7;
+            --yellow-painting: #d3a81c;
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark: #232830;
+            --sm: 14px;
+            --md: 15px;
+            --lg: 18px;
+        }
+
+        body{
+            font-family: 'Quicksand', sans-serif;
+            height: 100%;
+        }
+
+        .wrapped{
+            min-height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /** -- NAVBAR -- **/
+        /* Navbar */
+        nav{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 60px;
+            padding: 0 30px;
+            background-color: var(--white);
+            box-shadow: 0px 1px 6px 0px rgba(0,0,0,.05);
+            /* border-bottom: 1px solid var(--very-light-pink); */
+        }
+
+        .menu{
+            display: none;
+        }
+
+        .logo{
+            width: 100px;
+        }
+
+        .navbar-left{
+            display: flex;
+        }
+
+        .navbar-left ul,
+        .navbar-right ul{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            list-style: none;
+            font-size: var(--sm);
+        }
+
+        .navbar-left ul{
+            margin-left: 12px;
+        }
+
+        .navbar-left ul li a{
+            position: relative;
+            text-decoration: none;
+            color: var(--very-light-pink);
+            margin: 0 8px;
+        }
+
+
+        .navbar-right ul li:first-child img{
+            transform: rotate(90deg);
+        }
+
+        .navbar-email{
+            display: flex;
+            margin-left: 12px;
+            margin-right: 14px;
+            color: var(--very-light-pink);
+            cursor: pointer;
+        }
+
+        .navbar-email:hover{
+            opacity: 0.6;
+        }
+
+        .navbar-email span{
+            padding: 10px 0px; /*Didn't exist: NEW*/
+            margin-right: 8px;
+        }
+
+        .navbar-shopping-car{
+            position: relative;
+            cursor: pointer;
+        }
+
+        .navbar-shopping-car div{
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            display: flex;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            background-color: var(--yellow-painting);
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 700;   
+        }
+
+
+        /* Navbar - Menu desktop */
+        .menuDesktop-Inactive{
+            display: none;
+        }
+
+        .desktop-menu{
+            position: absolute;
+            top: 42px;
+            right: 60px;
+            width: 115px;
+            height: auto;
+            padding: 15px;
+            border-radius: 4px;
+            background-color: var(--white);
+            box-shadow: 0px 6px 7px 0px rgba(0,0,0,.04); /*Replaced border: NEW*/
+            transition: transform 1.2s;
+            z-index: 2;
+        }
+
+        .desktop-menu ul{
+            list-style: none;
+            text-align: end;
+            font-size: var(--sm);
+            font-weight: 700;
+        }
+
+        .desktop-menu ul li:last-child{
+            padding-top: 20px;
+            border-top:  1px solid var(--very-light-pink);
+        }
+
+        .desktop-menu ul li:last-child a{
+            color: var(--yellow-painting);
+        }
+
+        .desktop-menu ul li a{
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .desktop-menu ul li a:hover{
+            color: var(--very-light-pink);   
+        }
+
+
+        /* Navbar - Menu mobile */
+        .menuMobile-Active{
+            transform: translateX(320px);
+            transition: transform 1.2s linear;
+        }
+
+        .mobile-menu{
+            position: absolute;
+            top: 60px;
+            left: -320px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            width: 100%;
+            max-width: 250px;
+            padding: 0 110px 0 30px;
+
+            font-weight: 700;
+            font-size: var(--sm);
+            transition: transform 1.2s;
+            background-color: var(--white);
+            z-index: 1;
+        }
+
+        .mobile-menu ul{
+
+            display: grid;
+            grid-auto-rows: 1fr;
+            margin-top: 25px;
+        }
+
+        .mobile-menu ul li{
+            list-style: none;
+            padding-bottom: 16px;
+            cursor: pointer;
+        }
+
+        .mobile-menu ul li:hover{
+            opacity: 0.6;
+        }
+
+        .mobile-menu ul li a{
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .mobile-menu .mmTitle{
+            text-transform: uppercase;
+            padding-bottom: 26px;
+        }
+
+        .mobile-menu ul:nth-child(1){
+            border-bottom: 1px solid var(--very-light-pink);
+        }
+
+        .mobile-menu ul:nth-child(3){
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu ul:nth-child(3) li{
+            padding-bottom: 15px;
+        }
+
+        .mobile-menu .email{
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .mobile-menu .sign-out{
+            font-size: 13px;
+            color: var(--yellow-painting);
+        }
+
+        /** -- MAIN -- **/
+
+        main{
+            margin-bottom: 70px;
+        }
+
+        /*My orders */
+        .my-order{
+            width: 100%;
+            /* height: 100vh; */
+            display: grid;
+            place-items: center;
+        }
+
+        .title{
+            font-size: 1.6rem;
+            margin: 0 0 30px;
+        }
+
+        .my-order_container{
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            width: 80%;
+            min-width: 270px;
+            padding: 40px 0 100px;
+            align-self: baseline;
+            height: calc( 100% - 100px);
+        }
+
+        .my-order_content{
+            display: flex;
+            flex-direction: column;
+            font-size: var(--sm);
+        }
+
+        .order{
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 28px;
+            padding-top: 10px;
+            border-top: 1px solid var(--text-input-field);
+            font-size: var(--md);
+        }
+
+        .order p:nth-child(1){
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order p span:nth-child(1){
+            padding-bottom: 4px;
+        }
+
+        .order p span:nth-child(2){
+            font-size: var(--sm);
+            color: var(--very-light-pink);
+        }
+
+        .order p:nth-child(2){
+            text-align: end;
+            font-weight: 700;
+        }
+
+        /* -- FOOTER -- */
+        /* Section footer */
+        footer{
+            position: absolute;
+            bottom: 0;
+            background-color: var(--black);
+            width: 100%;
+            min-width: 320px;
+            height: 100px;
+            padding: 0 40px;
+        }
+
+        .footer__container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .footer__container section{
+            width: 100%;
+        }
+
+        .footer__container section ul{
+            list-style-type: none;
+            list-style-type: none;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-around;
+        }
+
+        /* Footer links */
+        .footer__container section ul li a{
+            position: relative;
+            font-size: var(--sm);
+            font-weight: 500;
+            line-height: 2.6rem;
+            text-decoration: none;
+            color: var(--white);
+            margin: 0 10px;
+        }
+
+        /*Underline effect*/
+        .underline > li a::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--yellow-painting);
+            
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.6s ease-in-out;
+            z-index: 1;
+        }
+            
+        /*Underline effect*/
+        .underline > li a:hover:after{
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /** MEDIA QUERY NAVBAR **/
+
+        /* De 800 hacía abajo*/
+        @media (max-width: 800px){
+        /*Navbar */
+        nav{
+            min-width: 320px;
+            padding: 0 30px 0 22px ;
+        }
+
+        /*Navbar-mobile */
+        .menu{
+            display: block;
+            width: 24px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        .navbar-left ul{
+            display: none;
+        }
+
+        .navbar-email{
+            display: none;
+        }
+
+        .navbar-shopping-car{
+            margin-left: 12px;
+        }
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapped">
+        <!--Navbar -->
+        <nav>
+            <!-- Navbar icon-->
+            <img src="../assets/icons/icon_menu.svg" alt="menu" class="menu">
+
+            <!-- Navbar-left links-->
+            <div class="navbar-left">
+                <img src="../assets/logos/logo_the_gallery.svg" alt="logo" class="logo">
+                <ul class="underline">
+                    <li><a href="../index.html">All</a></li>
+                    <li><a href="#">Paintings</a></li>
+                    <li><a href="#">Watercolors</a></li>
+                    <li><a href="#">Pencils</a></li>
+                    <li><a href="#">Brushes</a></li>
+                    <li><a href="#">Others</a></li>
+                </ul>
+            </div>
+
+            <!-- Navbar-right links-->
+            <div class="navbar-right">
+                <ul>
+                    <li class="navbar-email">
+                        <span>youremail@gmail.com</span>
+                        <img src="../assets/icons/flechita.svg" alt="down-arrow">
+                    </li>
+                    <li class="navbar-shopping-car">
+                        <img src="../assets/icons/icon_shopping_cart.svg" alt="shopping-car">
+                        <div>
+                            <span id="products-in-car">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Navbar- Menu desktop-->
+            <div class="desktop-menu menuDesktop-Inactive">
+                <ul>
+                    <li>
+                        <!-- <a href="#" class="title">My order</a> REPLACED FOR:-->
+                        <a href="./11-CHECK-My_Orders.html">My orders</a>
+                    </li>
+                    <li>
+                        <a href="./6-CHECK-Edit_Account.html">My account</a>
+                    </li>
+                    <li>
+                        <a href="./4-CHECK-Login.html">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Navbar- Menu mobile-->
+            <div class="mobile-menu">
+                <ul>
+                    <p class="mmTitle">Categories</p>
+                    <li><a href="../index.html">All</a></li>
+                    <li><a href="#">Paintings</a></li>
+                    <li><a href="#">Watercolors</a></li>
+                    <li><a href="#">Pencils</a></li>
+                    <li><a href="#">Brushes</a></li>
+                    <li><a href="#">Others</a></li>
+                </ul>
+                <ul>
+                    <li><a href="./11-CHECK-My_Orders.html">My orders</a></li>
+                    <li><a href="./6-CHECK-Edit_Account.html">My account</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#" class="email">youremail@gmail.com</a></li>
+                    <li><a href="./4-CHECK-Login.html" class="sign-out">Sign out</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main -->
+        <main>
+            <div class="my-order">
+                <!-- Order's information -->
+                <section class="my-order_container">
+                    <h1 class="title">My orders</h1>
+
+                    <!-- Total product's information-card -->
+                    <div class="my-order_content">
+
+                        <!--Order-->
+                        <div class="order">
+                            <p>
+                                <span>04.25.2023</span>
+                                <span>6 articles</span>
+                            </p>
+                            <p>$ 560.00</p>
+                            <a href="#">
+                                <img src="../assets/icons/flechita.svg" alt="right-arrow">
+                            </a>
+                        </div>  
+
+                        <!--Order-->
+                        <div class="order">
+                            <p>
+                                <span>04.25.2023</span>
+                                <span>6 articles</span>
+                            </p>
+                            <p>$ 560.00</p>
+                            <a href="#">
+                                <img src="../assets/icons/flechita.svg" alt="right-arrow">
+                            </a>
+                        </div>  
+                        
+                        <!--Order-->
+                        <div class="order">
+                            <p>
+                                <span>04.25.2023</span>
+                                <span>6 articles</span>
+                            </p>
+                            <p>$ 560.00</p>
+                            <a href="#">
+                                <img src="../assets/icons/flechita.svg" alt="right-arrow">
+                            </a>
+                        </div> 
+                        
+                        <!--Order-->
+                        <div class="order">
+                            <p>
+                                <span>04.25.2023</span>
+                                <span>6 articles</span>
+                            </p>
+                            <p>$ 560.00</p>
+                            <a href="#">
+                                <img src="../assets/icons/flechita.svg" alt="right-arrow">
+                            </a>
+                        </div> 
+                        
+                    </div>
+                </section>
+                
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer__container">
+                <section>
+                    <ul class="underline">
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Address</a></li>
+                        <li><a href="">Contac us</a> </li>
+                        <li><a href="https://www.linkedin.com/in/ahelu/">Linkedin</a> </li>
+                        <li><a href="https://github.com/Ahelu" target="_blank">Github</a></li>
+                    </ul>
+                </section>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Js Conection-->
+    <script src="../js/MyOrders.js"></script>
+</body>
+</html>

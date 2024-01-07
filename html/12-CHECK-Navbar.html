@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The gallery Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        :root{
+            --very-light-pink: #9a9a9a;
+            --text-input-field: #f7f7f7;
+            --yellow-painting: #d3a81c; 
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark: #232830;
+            --sm: 14px;
+            --md: 15px;
+            --lg: 18px;
+        }
+
+        body{
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-between;
+            /* width: 100%; */
+            height: 60px;
+            padding: 0 24px;
+            border-bottom: 1px solid var(--very-light-pink);
+        }
+
+        .menu{
+            display: none;
+        }
+
+        .logo{
+            width: 100px;
+        }
+
+        .navbar-left{
+            display: flex;
+        }
+
+        .navbar-left ul,
+        .navbar-right ul{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            height: 100%;
+            font-size: var(--sm);
+        }
+
+        .navbar-left ul{
+            margin-left: 12px;
+        }
+
+        .navbar-left ul li a{
+            text-decoration: none;
+            color: var(--very-light-pink);
+            border: 1px solid var(--white);
+            border-radius: 6px;
+            padding: 8px;
+        }
+
+        .navbar-left ul li a:hover{
+            color: var(--yellow-painting);
+            border: 1px solid var(--yellow-painting);
+        }
+
+        .navbar-right ul li:first-child img{
+            transform: rotate(90deg);
+        }
+
+        .navbar-right ul li:first-child img:hover{
+            cursor: pointer;
+            opacity: 0.2;
+        }
+
+        .navbar-email{
+            display: flex;
+            margin-left: 12px;
+            color: var(--very-light-pink);
+            margin-right: 14px;
+        }
+
+        .navbar-email span{
+            margin-right: 8px;
+        }
+
+        .navbar-shopping-car{
+            position: relative;
+        }
+
+        .navbar-shopping-car div{
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            display: flex;
+            justify-content: center;
+            width: 14px;
+            height: 14px;
+            background-color: var(--yellow-painting);
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 700;   
+        }
+
+        /* @media (max-width: 600px){ */
+        @media (max-width: 800px){
+           .menu{
+                display: block;
+                width: 24px;
+                margin-right: 12px;
+            }
+
+           .navbar-left ul{
+                display: none;
+            }
+
+            .navbar-email{
+                display: none;
+            }
+
+            .navbar-shopping-car{
+                margin-left: 12px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="../icons/icon_menu.svg" alt="menu" class="menu">
+
+        <div class="navbar-left">
+            <img src="../logos/logo_the_gallery.svg" alt="logo" class="logo">
+            <ul>
+                <li><a href="#">All</a></li>
+                <li><a href="#">Paintings</a></li>
+                <li><a href="#">Watercolors</a></li>
+                <li><a href="#">Pencils</a></li>
+                <li><a href="#">Brushes</a></li>
+                <li><a href="#">Others</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-right">
+            <ul>
+                <li class="navbar-email">
+                    <span>youremail@gmail.com</span>
+                    <img src="../icons/flechita.svg" alt="down-arrow">
+                </li>
+                <li class="navbar-shopping-car">
+                    <img src="../icons/icon_shopping_cart.svg" alt="shopping-car">
+                    <div>2</div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

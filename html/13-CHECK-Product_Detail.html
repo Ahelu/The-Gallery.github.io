@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The gallery Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        :root{
+            --very-light-pink: #9a9a9a;
+            --text-input-field: #f7f7f7;
+            --yellow-painting: #d3a81c; 
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark: #232830;
+            --sm: 14px;
+            --md: 15px;
+            --lg: 18px;
+        }
+
+        body{
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .product-detail{
+            width: 390px;
+            height: 100vh;
+            padding: 24px 6px;
+            position: absolute;
+            right: 0;
+        }
+
+        .product-detail-close{
+            display: grid;
+            place-items: center;
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            width: 24px;
+            height: 24px;
+            background-color: var(--white);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .product-detail-close:hover{
+            cursor: pointer;
+        }
+
+        .product-detail > img:nth-child(2){
+            display: block;
+            width: 95%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 0 auto 20px;
+        }
+
+        .product-detail-info{
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+            font-size: var(--lg);
+            line-height: 2.4rem;
+            padding: 0 12px;
+        }
+
+        .product-detail-info p{
+            padding-bottom: 18px;
+        }
+
+        .product-detail-info p:first-child{
+            font-weight: 700;
+            padding-bottom: 4px;
+        }
+
+        .product-detail-info p:nth-child(2){
+            color: var(--very-light-pink);
+        }
+
+        .primary-button{
+            width: 99%;
+            height: 44px;
+            background-color: var(--yellow-painting);
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: var(--md);
+            font-weight: bold;
+            color: var(--white);
+            margin-top: 12px;
+        }
+
+        .primary-button:hover{
+            width: 100%;
+            height: 46px;
+        }
+
+        .add-to-car-button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-to-car-button img{
+            margin-right: 9px;
+            width: 22px;
+        }
+
+        .primary-button span{
+            margin-right: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .product-detail{
+                width: 100%;
+            }            
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Product Detail -->
+    <aside class="product-detail">
+        <!-- Product Detailt Close Icon -->
+        <div class="product-detail-close">
+            <img src="../icons/icon_close.png" alt="close">
+        </div>
+        <!-- Product Detailt IMG -->
+        <img src="https://images.pexels.com/photos/1738434/pexels-photo-1738434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="close">
+        
+        <!-- Product Detailt information -->
+        <div class="product-detail-info">
+            <p>$ 120.00</p>
+            <p>Painting</p>
+            <p>Beautiful abstract painting for all kind of environments.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            </p>
+            <button class="primary-button add-to-car-button">
+                <img src="../icons/bt_add_to_cart.png" alt="add-car">
+                <span>Add to car</span>
+            </button>
+        </div>
+    </aside>
+</body>
+</html>
